@@ -46,3 +46,53 @@ public class Main
 }
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //recursive approach-
+public class ReverseLinkedList {
+     static Node head;
+    static class Node{
+        int data;
+        Node next;
+        Node(int data){
+            this.data=data;
+            this.next=null;
+        }
+    }
+    static Node reverse(Node head){
+        if(head==null|| head.next==null)
+            return head;
+        Node rest=reverse(head.next);
+        head.next.next=head;
+        head.next=null;
+        return rest;
+
+    }
+    static void print(){
+        Node temp=head;
+        while(temp!=null){
+            System.out.println(temp.data+" ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
+    static void push(int data){
+        Node temp=new Node(data);
+        temp.next=head;
+        head=temp;
+    }
+
+    public static void main(String[] args) {
+       push(1);
+       push(2);
+       push(3);
+       push(4);
+       push(5);
+        System.out.println("linked list before reversing");
+        print();
+        head=reverse(head);
+        System.out.println("linked list after reversing");
+        print();
+
+    }
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Reversing the linked list using tail recursion-
+#code-
